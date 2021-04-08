@@ -1,0 +1,187 @@
+package org.apache.jsp.Lost.Delete;
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+import javax.servlet.jsp.*;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Connection;
+
+public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
+    implements org.apache.jasper.runtime.JspSourceDependent {
+
+  private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
+
+  private static java.util.List<String> _jspx_dependants;
+
+  private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
+
+  public java.util.List<String> getDependants() {
+    return _jspx_dependants;
+  }
+
+  public void _jspService(HttpServletRequest request, HttpServletResponse response)
+        throws java.io.IOException, ServletException {
+
+    PageContext pageContext = null;
+    HttpSession session = null;
+    ServletContext application = null;
+    ServletConfig config = null;
+    JspWriter out = null;
+    Object page = this;
+    JspWriter _jspx_out = null;
+    PageContext _jspx_page_context = null;
+
+    try {
+      response.setContentType("text/html");
+      pageContext = _jspxFactory.getPageContext(this, request, response,
+      			null, true, 8192, true);
+      _jspx_page_context = pageContext;
+      application = pageContext.getServletContext();
+      config = pageContext.getServletConfig();
+      session = pageContext.getSession();
+      out = pageContext.getOut();
+      _jspx_out = out;
+      _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
+
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+
+String driver = "com.mysql.jdbc.Driver";
+String connectionUrl = "jdbc:mysql://localhost:3306/";
+String database = "ip";
+String userid = "root";
+String password = "";
+try {
+Class.forName(driver);
+} catch (ClassNotFoundException e) {
+e.printStackTrace();
+}
+Connection connection = null;
+Statement statement = null;
+ResultSet resultSet = null;
+
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("    <head> \n");
+      out.write("<meta charset=\"utf-8\">\n");
+      out.write("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n");
+      out.write("<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css\">\n");
+      out.write("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n");
+      out.write("<style>\n");
+      out.write("    .button {\n");
+      out.write("  background-color: #4CAF50; /* Green */\n");
+      out.write("  border: none;\n");
+      out.write("  color: white;\n");
+      out.write("  padding: 15px 32px;\n");
+      out.write("  text-align: center;\n");
+      out.write("  text-decoration: none;\n");
+      out.write("  display: inline-block;\n");
+      out.write("  font-size: 16px;\n");
+      out.write("  margin: 4px 2px;\n");
+      out.write("  cursor: pointer;\n");
+      out.write("}\n");
+      out.write("\n");
+      out.write(".disabled {\n");
+      out.write("  opacity: 0.6;\n");
+      out.write("  cursor: not-allowed;\n");
+      out.write("}\n");
+      out.write("table {\n");
+      out.write("  font-family: arial, sans-serif;\n");
+      out.write("  border-collapse: collapse;\n");
+      out.write("  width: 100%;\n");
+      out.write("}\n");
+      out.write("\n");
+      out.write("td, th {\n");
+      out.write("  border: 1px solid #dddddd;\n");
+      out.write("  text-align: left;\n");
+      out.write("  padding: 8px;\n");
+      out.write("}\n");
+      out.write("\n");
+      out.write("tr:nth-child(even) {\n");
+      out.write("  background-color: #dddddd;\n");
+      out.write("}\n");
+      out.write("</style>\n");
+      out.write("    </head>\n");
+      out.write("<body>\n");
+      out.write("    <a href=\"\"></a>\n");
+      out.write("    <form action=\"../process.jsp\"> \n");
+      out.write("<button class=\"button\"> Back to Record </button>\n");
+      out.write("<div class=\"container\">\n");
+      out.write("    </form>\n");
+      out.write("<div class=\"container\">\n");
+      out.write("<form class=\"form-inline\" method=\"post\" action=\"search.jsp\">\n");
+      out.write("<input type=\"text\" name=\"code\" class=\"form-control\" placeholder=\"Tracking ID\">\n");
+      out.write("<button type=\"submit\" name=\"save\" class=\"btn btn-primary\">Search</button>\n");
+      out.write("</form>\n");
+      out.write("<h1> Delete Data </h1>\n");
+      out.write("<table border=\"1\">\n");
+      out.write("<tr>\n");
+      out.write("<td>ID</td>\n");
+      out.write("<td>Lost Item Name</td>\n");
+      out.write("<td>Tracking ID</td>\n");
+      out.write("<td>Email</td>\n");
+      out.write("<td>Lost Date </td>\n");
+      out.write("<td>Action</td>\n");
+      out.write("</tr>\n");
+
+try{
+connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+statement=connection.createStatement();
+String sql ="select * from lost";
+resultSet = statement.executeQuery(sql);
+int i=0;
+while(resultSet.next()){
+
+      out.write("\n");
+      out.write("<tr>\n");
+      out.write("<td>");
+      out.print(resultSet.getString("id") );
+      out.write("</td>   \n");
+      out.write("<td>");
+      out.print(resultSet.getString("name") );
+      out.write("</td>\n");
+      out.write("<td>");
+      out.print(resultSet.getString("code") );
+      out.write("</td>\n");
+      out.write("<td>");
+      out.print(resultSet.getString("email") );
+      out.write("</td>\n");
+      out.write("<td>");
+      out.print(resultSet.getString("date") );
+      out.write("</td>\n");
+      out.write("<td><a href=\"delete.jsp?id=");
+      out.print(resultSet.getString("id") );
+      out.write("\"><button type=\"button\" class=\"delete\">Delete</button></a></td>\n");
+      out.write("</tr>\n");
+
+i++;
+}
+connection.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+
+      out.write("\n");
+      out.write("</table>\n");
+      out.write("</body>\n");
+      out.write("</html> ");
+    } catch (Throwable t) {
+      if (!(t instanceof SkipPageException)){
+        out = _jspx_out;
+        if (out != null && out.getBufferSize() != 0)
+          out.clearBuffer();
+        if (_jspx_page_context != null) _jspx_page_context.handlePageException(t);
+        else throw new ServletException(t);
+      }
+    } finally {
+      _jspxFactory.releasePageContext(_jspx_page_context);
+    }
+  }
+}
